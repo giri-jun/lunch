@@ -1,7 +1,7 @@
 {
   "name": "점심 룰렛",
   "short_name": "점심룰렛",
-  "start_url": ".",
+  "start_url": "./",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#f0f0f0",

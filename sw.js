@@ -2,21 +2,25 @@ const CACHE_NAME = "lunch-roulette-cache-v1";
 const urlsToCache = [
   "./",
   "index.html",
+  "manifest.json",
   "image 1.png",
-  "image 2.png",
-  "manifest.json"
+  "image 2.png"
 ];
 
-// Install SW and cache files
-self.addEventListener("install", event => {
+// install
+self.addEventListener("install", function (event) {
   event.waitUntil(
-    caches.open(CACHE_NAME).then(cache => cache.addAll(urlsToCache))
+    caches.open(CACHE_NAME).then(function (cache) {
+      return cache.addAll(urlsToCache);
+    })
   );
 });
 
-// Serve cached files when offline
-self.addEventListener("fetch", event => {
+// fetch
+self.addEventListener("fetch", function (event) {
   event.respondWith(
-    caches.match(event.request).then(response => response || fetch(event.request))
+    caches.match(event.request).then(function (response) {
+      return response || fetch(event.request);
+    })
   );
 });
